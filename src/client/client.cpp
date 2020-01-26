@@ -57,7 +57,7 @@ bool Client::init(const ClientConfig &config, float aspect)
     // OpenGL stuff
     m_cube = makeCubeVertexArray(1, 2, 1);
 
-    selectionBox = makeWireCubeVertexArray(1, 1, 1);
+    m_selectionBox = makeWireCubeVertexArray(1, 1, 1);
 
     // Selection box shader
     m_selectionShader.program.create("selection", "selection");
@@ -465,7 +465,7 @@ void Client::endGame()
     for (auto &chunk : m_chunks.fluidDrawables) {
         chunk.vao.destroy();
     }
-    selectionBox.destroy();
+    m_selectionBox.destroy();
     NetworkHost::disconnectFromPeer(mp_serverPeer);
 }
 
